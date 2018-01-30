@@ -924,7 +924,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
             throws IOException {
         int count = nioBufferCount();
         if (count == 1) {
-            return out.write(internalNioBuffer(index, length));
+            return out.write(nioBuffer(index, length));
         } else {
             long writtenBytes = out.write(nioBuffers(index, length));
             if (writtenBytes > Integer.MAX_VALUE) {
@@ -940,7 +940,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
             throws IOException {
         int count = nioBufferCount();
         if (count == 1) {
-            return out.write(internalNioBuffer(index, length), position);
+            return out.write(nioBuffer(index, length), position);
         } else {
             long writtenBytes = 0;
             for (ByteBuffer buf : nioBuffers(index, length)) {
